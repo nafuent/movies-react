@@ -1,0 +1,27 @@
+import { useEffect, useState } from "react";
+import { get } from "../utils/httpClient";
+import { MovieCard } from "./MovieCard";
+
+import styles from "./MoviesGrid.module.css";
+
+export function MoviesGrid(){
+
+    const  [movies, setMovies]=useState([]);
+
+    //const movies =moviesState[0];
+    //const setMovies =moviesState[1];
+
+    useEffect(()=>{
+        get("/discover/movie").then((data)=>{
+            setMovies(data.results);
+        });
+    },[]);
+
+    return(
+        <ul className={styles.moviesGrid}>
+            {movies.map((movie)=> (
+               <MovieCard key={movie.id}  movie={movie}/>
+            ))}
+        </ul>
+    );
+}
