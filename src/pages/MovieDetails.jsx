@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { MoviesGrid } from "../components/moviesGrid";
 import { Spinner } from "../components/Spinner";
 import { useQuery } from "../hooks/useQuery";
+import { getMovieImg } from "../utils/getMovieImg";
 import { get } from "../utils/httpClient";
 import styles from "./MovieDetails.module.css"
 
@@ -28,7 +29,8 @@ export function MovieDetails(){
         return null;
     }
 
-    const imageUrl="https://image.tmdb.org/t/p/w500" + movie.poster_path;
+    const imageUrl=getMovieImg( movie.poster_path,400)
+    //const imageUrl="https://image.tmdb.org/t/p/w500" + movie.poster_path;
 
     return <div className={styles.detailsContainer}>
         <img src={imageUrl} alt={movie.title} className={`${styles.col} ${styles.movieImage}`}/>
