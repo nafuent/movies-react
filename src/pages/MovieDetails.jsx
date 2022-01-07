@@ -1,8 +1,7 @@
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MoviesGrid } from "../components/moviesGrid";
 import { Spinner } from "../components/Spinner";
-import { useQuery } from "../hooks/useQuery";
+
 import { getMovieImg } from "../utils/getMovieImg";
 import { get } from "../utils/httpClient";
 import styles from "./MovieDetails.module.css"

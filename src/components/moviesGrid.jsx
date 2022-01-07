@@ -16,13 +16,7 @@ export function MoviesGrid({search}){
     const  [movies, setMovies]=useState([]);
     const [isLoading,setIsloading]=useState(true);
     const [page, setPage] =useState(1);
-    const [hasMore, setHasMore]=useState(true);
-
-    //const movies =moviesState[0];
-    //const setMovies =moviesState[1];
-    //const query =useQuery();
-    //const search = query.get("search");
-    
+    const [hasMore, setHasMore]=useState(true);    
 
     useEffect(()=>{
         setIsloading(true);
@@ -35,10 +29,6 @@ export function MoviesGrid({search}){
             setIsloading(false);
         });
     },[search, page]);
-
-    /*if(isLoading){
-        return <Spinner></Spinner>
-    }*/
 
     if (!isLoading && movies.length===0){
         return <Empty></Empty>
